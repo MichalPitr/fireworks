@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #000; /* Optional: dark background for better visibility */
+}
+
+.firework, .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.firework {
+    position: absolute;
+    width: 4px; /* Small dot */
+    height: 4px; /* Small dot */
+    background-color: white; /* Bright light source */
+    border-radius: 50%; /* Circular shape */
+    box-shadow: 0 0 8px white; /* Glowing effect */
+    bottom: 0;
+}
+
+
+
+.particle {
+    width: 5px;
+    height: 5px;
+    background-color: #ff0;
+    box-shadow: 0 0 8px #ff0; /* Simple glow effect for trail */
+    border-radius: 50%;
+    opacity: 1;
+}
+
+.new-year-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6em;
+    color: white;
+    text-align: center;
+    z-index: 1000;
+    opacity: 0; /* Start with the text being transparent */
+    transition: opacity 2s ease, transform 2s ease; /* Transition for opacity and transform */
+}
+
+/* Class to be added for animation */
+.new-year-message-visible {
+    opacity: 1; /* End with the text fully visible */
+    transform: translate(-50%, -50%) scale(1.1); /* Slightly larger to create a 'pop' effect */
+}
