@@ -30,29 +30,28 @@ function createFirework() {
     firework.className = 'firework';
     document.body.appendChild(firework);
 
-    firework.style.left = window.innerWidth*0.25 + window.innerWidth* Math.random() * 0.5 + 'px'
+    firework.style.left = window.innerWidth * 0.25 + window.innerWidth * Math.random() * 0.5 + 'px';
 
     let positionY = 0;
     const speed = Math.random() * 3 + 3;
+    // Random height for explosion between 50% to 75% of the window height
+    const explosionHeight = window.innerHeight * (0.5 + Math.random() * 0.25);
 
     function moveFirework() {
         positionY += speed;
         firework.style.bottom = positionY + 'px';
 
-        if (positionY < window.innerHeight) {
+        if (positionY < explosionHeight) {
             requestAnimationFrame(moveFirework);
         } else {
+            explode(firework);
             firework.remove();
         }
     }
 
     moveFirework();
-
-    // Set the explosion to occur after 2 seconds
-    setTimeout(() => {
-        explode(firework);
-    }, 2000);
 }
+
 
 function explode(firework) {
     const numberOfParticles = 30;
